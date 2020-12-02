@@ -1,0 +1,49 @@
+.Todo { 
+    width: 260px;
+    height: 280px;
+    margin: 8px;
+    box-shadow: 10px 10px 5px #4a564be1 !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.Header{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+}
+
+.Title{
+    height: 100%;
+    width: 70%;
+}
+p{
+    margin: 0;
+    padding: 0;
+    padding-left: 5px;
+}
+
+.IconsCont{
+    width: 30%;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.Desc{
+    width: 100%;
+    height: 80%;
+    overflow: auto;
+}
+ .rotateRight {
+    float: left;
+    transform: rotate(7deg);
+  }
+  
+.rotateLeft {
+    float: left;
+    transform: rotate(-8deg);
+  } 
