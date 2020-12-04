@@ -1,17 +1,16 @@
 import React from 'react';
 import Todo from './Todo/Todo';
 import './Todos.css'
-import { deleteTodo, updateTodo } from '../../redux/action';
+import { useSelector } from 'react-redux';
 
 
-const Todos = ({data}) => {
+const Todos = () => {
+
+    let data = useSelector(state => state.todo.fetchTodo)
     const todos = data.length 
     ? data.map(d => {
-        console.log(data);
         return (
             <Todo 
-            updateTodo={updateTodo}
-            deleteTodo={deleteTodo}
                 key={d._id}
                 data={d}
             />

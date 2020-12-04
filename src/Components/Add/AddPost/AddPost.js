@@ -4,7 +4,9 @@ import * as Yup from 'yup'
 import {Formik} from 'formik'
 import Error from './Error';
 
-import { fetchTodos, fetchTodosById, createTodo, deleteTodo, updateTodo, deleteAllTodos } from '../../../redux/action';
+import { createTodo } from '../../../redux/action';
+import { useDispatch } from 'react-redux';
+
 
 
 const validationSchema = Yup.object().shape({
@@ -22,14 +24,17 @@ const validationSchema = Yup.object().shape({
 })
 
 
-const AddPost = ({postData}) => {
+const AddPost = () => {
+
+    const dispatch = useDispatch()
+
     return (
         <Formik
             initialValues={{ title: '', description: '', color: '' }}
             validationSchema={validationSchema}
             onSubmit={(values, { setSubmitting, resetForm }) => {
                 setSubmitting(true)
-                    props.createTodo(values)
+                    dispatch(createTodo(values))
                     resetForm()
                     setSubmitting(false)
             }}
@@ -53,8 +58,8 @@ const AddPost = ({postData}) => {
                             <input
                                 id='title'
                                 type='text'
-                                name='title'
-                                placeholder='Enter your title'
+                                name='title' 
+                                placeholder='Enter title'
                                 value={values.title}
                                 className={touched.title && errors.title ? 'has-error' : null}
                                 onChange={handleChange}
@@ -66,7 +71,7 @@ const AddPost = ({postData}) => {
                                 id='description'
                                 type='text'
                                 name='description'
-                                placeholder='Enter your description'
+                                placeholder='Enter description'
                                 value={values.description}
                                 className={touched.description && errors.description ? 'has-error' : null}
                                 onChange={handleChange}
@@ -79,7 +84,7 @@ const AddPost = ({postData}) => {
                                 id='color'
                                 type='text'
                                 name='color'
-                                placeholder='Enter your color'
+                                placeholder='Enter color'
                                 value={values.color}
                                 className={touched.color && errors.color ? 'has-error' : null}
                                 onChange={handleChange}
