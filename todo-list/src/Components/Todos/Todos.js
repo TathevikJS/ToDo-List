@@ -2,19 +2,16 @@ import React from 'react';
 import Todo from './Todo';
 import './Todos.css'
 
-const Todos = ({data, deleteData, editDataFetch, isEdit}) => {
+const Todos = ({data, deleteData, editDataFetch}) => {
     const todos = data.length 
     ? data.map(d => {
         console.log(data);
         return (
             <Todo 
-            isEdit={isEdit}
-                editDataFetch={() => editDataFetch(d._id)}
-                deleteData={() => deleteData(d._id)}
+                editDataFetch={editDataFetch}
+                deleteData={deleteData}
                 key={d._id}
-                title={d.title}
-                desc={d.description}
-                color={d.color}
+                data={d}
             />
         )
     }) 

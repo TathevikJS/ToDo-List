@@ -1,7 +1,7 @@
 .Todo { 
-    width: 260px;
-    height: 280px;
-    margin: 8px;
+    width: 250px;
+    height: 270px;
+    margin: 22px;
     box-shadow: 10px 10px 5px #4a564be1 !important;
     display: flex;
     flex-direction: column;

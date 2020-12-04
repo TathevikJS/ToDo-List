@@ -46,6 +46,7 @@ const AddPost = ({postData}) => {
                         onSubmit={handleSubmit}>
                         <div className='container'>
                             <label htmlFor='title'>title</label>
+                            <br />
                             <input
                                 id='title'
                                 type='text'
