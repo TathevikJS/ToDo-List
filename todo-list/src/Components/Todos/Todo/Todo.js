@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import './Todo.css';
 
-import editIcon from '../../assets/edit.png'
-import deleteIcon from '../../assets/remove.png'
-import done from '../../assets/tick.png'
+import editIcon from '../../../assets/edit.png'
+import deleteIcon from '../../../assets/remove.png'
+import done from '../../../assets/tick.png'
 
 
 

@@ -4,6 +4,9 @@ import * as Yup from 'yup'
 import {Formik} from 'formik'
 import Error from './Error';
 
+import { fetchTodos, fetchTodosById, createTodo, deleteTodo, updateTodo, deleteAllTodos } from '../../../redux/action';
+
+
 const validationSchema = Yup.object().shape({
     title: Yup
         .string()
@@ -26,7 +29,7 @@ const AddPost = ({postData}) => {
             validationSchema={validationSchema}
             onSubmit={(values, { setSubmitting, resetForm }) => {
                 setSubmitting(true)
-                    postData(values)
+                    props.createTodo(values)
                     resetForm()
                     setSubmitting(false)
             }}

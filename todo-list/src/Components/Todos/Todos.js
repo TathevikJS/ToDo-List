@@ -1,15 +1,17 @@
 import React from 'react';
-import Todo from './Todo';
+import Todo from './Todo/Todo';
 import './Todos.css'
+import { deleteTodo, updateTodo } from '../../redux/action';
 
-const Todos = ({data, deleteData, editDataFetch}) => {
+
+const Todos = ({data}) => {
     const todos = data.length 
     ? data.map(d => {
         console.log(data);
         return (
             <Todo 
-                editDataFetch={editDataFetch}
-                deleteData={deleteData}
+            updateTodo={updateTodo}
+            deleteTodo={deleteTodo}
                 key={d._id}
                 data={d}
             />
