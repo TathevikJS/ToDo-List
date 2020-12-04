@@ -1,13 +1,12 @@
-import React from 'react';
-import './AddPost.css'
+import React from 'react'
 import * as Yup from 'yup'
-import {Formik} from 'formik'
-import Error from './Error';
+import { Formik } from 'formik'
+import Error from './Error'
 
-import { createTodo } from '../../../redux/action';
-import { useDispatch } from 'react-redux';
+import { createTodo } from '../../../redux/action'
+import { useDispatch } from 'react-redux'
 
-
+import './AddPost.css'
 
 const validationSchema = Yup.object().shape({
     title: Yup
@@ -34,9 +33,9 @@ const AddPost = () => {
             validationSchema={validationSchema}
             onSubmit={(values, { setSubmitting, resetForm }) => {
                 setSubmitting(true)
-                    dispatch(createTodo(values))
-                    resetForm()
-                    setSubmitting(false)
+                dispatch(createTodo(values))
+                resetForm()
+                setSubmitting(false)
             }}
         >
             {(
@@ -58,7 +57,7 @@ const AddPost = () => {
                             <input
                                 id='title'
                                 type='text'
-                                name='title' 
+                                name='title'
                                 placeholder='Enter title'
                                 value={values.title}
                                 className={touched.title && errors.title ? 'has-error' : null}
@@ -91,16 +90,14 @@ const AddPost = () => {
                                 onBlur={handleBlur}
                             />
                             <Error touched={touched.color} message={errors.color} />
-                           
 
                             <button type='submit'>Add ToDo</button>
                         </div>
                     </form>
                 )
             }}
-
         </Formik>
-    );
+    )
 }
 
-export default AddPost;
+export default AddPost

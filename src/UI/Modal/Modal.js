@@ -1,5 +1,5 @@
-import React from 'react';
-import { Modal } from '@material-ui/core';
+import React from 'react'
+import { Modal } from '@material-ui/core'
 
 const SimpleModal = (props) => {
     return ( 
@@ -9,7 +9,7 @@ const SimpleModal = (props) => {
         >
             {props.body}
         </Modal>
-     );
+     )
 }
  
-export default SimpleModal;
+export default SimpleModal
