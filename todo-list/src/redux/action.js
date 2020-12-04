@@ -1,4 +1,4 @@
-import { CREATE_TODO, GET_TODOS, DELETE_TODO, UPDATE_TODO, OPEN_MODAL, CLOSE_MODAL } from './types'
+import { CREATE_TODO, GET_TODOS, DELETE_TODO, UPDATE_TODO, OPEN_MODAL, CLOSE_MODAL, DELETE_ALL_TODO } from './types'
 
 export async function fetchTodos() {
         try {
@@ -8,7 +8,7 @@ export async function fetchTodos() {
             console.log(data.message);
           } else {
             dispatch({ type: GET_TODOS, payload: data })
-            setData(data)
+            //setData(data)
             console.log(data);
           }
         } catch (error) {
@@ -18,19 +18,19 @@ export async function fetchTodos() {
 
 export async function createTodo(value) {
     try {
-        const fetchSignUp = await fetch('https://todo.eachbase.com/api/TathevikHayrapetyan/todos', {
+        const postFetch = await fetch('https://todo.eachbase.com/api/TathevikHayrapetyan/todos', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify(value)
         })
-        const posteddata = await fetchSignUp.json()
+        const posteddata = await postFetch.json()
         if (posteddata.error) {
         } else {
-            dispatch({ type: CREATE_TODO, payload: data })
+            dispatch({ type: CREATE_TODO, payload: value })
           console.log(posteddata);
-          setData([...data, value])
+          //setData([...data, value])
           handleClose()
         }
       } catch (error) {
@@ -48,16 +48,16 @@ export async function deleteTodo(id) {
         if (delData.message) {
           console.log(delData.message);
         } else {
-          dispatch({ type: DELETE_TODO, payload: data })
-          const newData = data.filter(d => d._id !== id)
-          setData(newData)
+         // const newData = data.filter(d => d._id !== id)
+          dispatch({ type: DELETE_TODO, payload: delData })
+          //setData(newData)
         }
       } catch (error) {
         console.log(error);
       }
     }
 
-export async function updateTodo(data, id) {
+export async function updateTodo(value, id) {
     try {
         const editData = await fetch(`https://todo.eachbase.com/api/TathevikHayrapetyan/todos/${id}`, {
           method: 'PATCH',
@@ -70,7 +70,7 @@ export async function updateTodo(data, id) {
         if (editedData.message) {
           console.log(editedData.message);
         } else {
-          dispatch({ type: UPDATE_TODO, payload: data })
+          dispatch({ type: UPDATE_TODO, payload: value })
           console.log(editedData);
         }
       } catch (error) {
@@ -96,17 +96,21 @@ export async function deleteAllTodos () {
         console.log(error);
       }
     }))
-    setData([])
+    dispatch({ type: DELETE_ALL_TODO, payload: [] })
+    
   }
 
 
   
   export const handleOpen = () => {
-    setOpen(true)
+    //setOpen(true)
+    dispatch({ type: OPEN_MODAL, payload: true })
+
   }
 
   export const handleClose = () => {
-    setOpen(false)
+   // setOpen(false)
+   dispatch({ type: CLOSE_MODAL, payload: false })
   }
 
 
